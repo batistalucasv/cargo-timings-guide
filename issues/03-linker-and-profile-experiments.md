@@ -1,46 +1,60 @@
-# Issue 03 — Linker Wars & Profile Tuning (`mold`, `wild`, Incremental, `line-tables-only`)
+<p align="center">
+  <a href="../README.md">← Cover</a> ·
+  <a href="01-context-and-multi-agent-oom.md">Issue 01</a> ·
+  <a href="02-storage-and-sccache-benchmarks.md">Issue 02</a> ·
+  <strong>Issue 03</strong> ·
+  <a href="04-privacy-preserving-cargo-telemetry.md">Issue 04 →</a>
+</p>
 
-Across 14 `env_hash` configurations, we tested the classic Rust compile-time levers one by one and measured them on real workloads.
+# Issue 03 · Linker Wars & Profile Tuning (`mold`, `wild`, Incremental, `line-tables-only`)
 
-## 1. Linker Showdown: `mold` vs. `wild`
+> *Controlled A/B results across 14 Cargo profiles—including why disabling incremental compilation backfired locally.*
 
-We benchmarked `mold 3.0.0` against `wild` (`-B<wild-bin>`) on the exact same `app-ui` target (`codegen-units = 256`, `opt-level = 0`, `line-tables-only`):
+---
+
+## 1 · Linker Showdown: `mold 3.0` vs. `wild`
+
+We tested `mold 3.0.0` head-to-head against `wild` (`-C link-arg=-B<wild-bin>`) on the exact same `app-ui` crate (`codegen-units = 256`, `opt-level = 0`, `debug = "line-tables-only"`):
 
 | `env_hash` | Linker | `clippy --all-targets` | `nextest` (cold) | `nextest` (warm) |
 |---|---|---:|---:|---:|
-| `29de672b6fc0` | **`mold 3.0.0`** (+ SSD `sccache`) | **9.53s (pass)** | — | **7.83s** |
-| `c431e074d48a` | **`wild`** | **2.46s (FAILED)** | 401.90s | 9.98s |
+| **`29de672b6fc0`** | **`mold 3.0.0`** (+ SSD `sccache`) | **9.53s (pass)** | — | **7.83s** |
+| `c431e074d48a` | `wild` | 2.46s (**FAILED**) | 401.90s | 9.98s |
 
-`wild` failed during `clippy --all-targets` and was slower than `mold` in the warm test loop (`9.98s` vs `7.83s`). **`mold` remains the clear winner for daily reliability and speed.**
+> [!WARNING]
+> In our tests, `wild` broke `cargo clippy --all-targets` and trailed `mold` by **+2.15s** on the warm test loop (`9.98s` vs `7.83s`). **`mold` remains our production recommendation on Linux.**
 
-## 2. The `CARGO_INCREMENTAL = "0"` Trap
+---
 
-Many CI/sccache guides recommend setting `CARGO_INCREMENTAL = "0"` globally so `rustc` emits cacheable artifacts for `sccache` across branches/worktrees. We tested both:
+## 2 · The `CARGO_INCREMENTAL = "0"` Trap
 
-- **`41a80f22062d` (`CARGO_INCREMENTAL = "0"` global, `n=133`):** `sccache` hit rate was only **1.6%** (`35 hits / 2,193 misses`), and `nextest` averaged **61.91s** (median **44.23s**). Why? Because every small edit to an internal crate invalidated incremental state and forced full crate recompilation.
-- **`bbd0a3bbe7c0` & `9edf022122b2` (Incremental enabled + `sccache` on SSD):** `nextest` mean dropped to **32.62s** (median **15.85s**), and `sccache` hit rate rose to **39.6%** overall (and **63.8%** once stabilized on the final day).
+Many CI tutorials advise setting `CARGO_INCREMENTAL = "0"` globally so `rustc` outputs artifacts that `sccache` can cache across branches. On a local workstation, we measured the exact opposite:
 
-**Lesson:** Use `CARGO_INCREMENTAL = "0"` in **CI**, not as a global setting for **local edit-compile-test loops**.
+| `env_hash` | Incremental Setting | Runs | `sccache` Hit Rate | `nextest` Mean | `nextest` Median |
+|---|---|---:|---:|---:|---:|
+| `41a80f22062d` | `CARGO_INCREMENTAL = "0"` (global) | 133 | **1.6%** (35 / 2,193) | 61.91s | 44.23s |
+| `bbd0a3bbe7c0` | Incremental ON in `dev`/`test` | 195 | 2.4% (31 / 1,239) | 40.31s | 17.44s |
+| **`9edf022122b2`** | **Incremental ON + SSD `sccache` + `opt-level=0`** | **640** | **39.6%** (day 2: **63.8%**) | **32.62s** | **15.85s** |
 
-## 3. `codegen-units` (`64` vs `128` vs `256`)
+**Why it happened:** Every minor edit to an internal workspace crate invalidated non-incremental compilation and forced `rustc` to re-codegen the whole crate from scratch. Keeping incremental compilation active locally while letting `sccache` cache external dependencies and unchanged crates delivered the best of both worlds.
 
-When `CARGO_INCREMENTAL = "0"` is set, `rustc` silently drops `codegen-units` from `256` down to `16`, hurting LLVM parallelism on large crates. Explicitly pinning `codegen-units = 256` in `[profile.dev]` and `[profile.test]` alongside `split-debuginfo = "unpacked"` and `debug = "line-tables-only"` kept cold builds faster than `64` (`349.29s`) and `128` (`408.82s`) while preserving full panic backtraces.
+---
 
-## 4. The Winning Profile (`9edf022122b2`)
+## 3 · `codegen-units`, `line-tables-only`, and `split-debuginfo`
 
-```toml
-[profile.dev]
-debug = "line-tables-only"
-codegen-units = 256
-split-debuginfo = "unpacked"
+- **Hidden pitfall:** When `CARGO_INCREMENTAL = "0"` is set, `rustc` silently drops `codegen-units` from `256` to **`16`**, throttling LLVM parallelism on large crates.
+- **Controlled test (`64` vs `128` vs `256`):** Cold rebuilds of `app-ui` took **349.29s** at `64` (`af06a50582b4`) and **408.82s** at `128` (`751159cacbde`). Pinning **`codegen-units = 256`** explicitly in `[profile.dev]` and `[profile.test]` preserved full LLVM parallelism.
+- **`debug = "line-tables-only"` + `split-debuginfo = "unpacked"`:** Cut disk write volume (`fs_out`) by **~36%** (from 8.83M blocks down to 5.67M blocks on heavy UI test builds) while retaining complete file/line backtraces on panic.
+- **`[profile.test] opt-level = 0`:** Eliminated unnecessary test-harness optimization time without slowing unit-test execution.
 
-[profile.test]
-opt-level = 0
-debug = "line-tables-only"
-codegen-units = 256
-split-debuginfo = "unpacked"
-```
+<p align="center">
+  <img src="../assets/chart-baseline-vs-final.svg" alt="Baseline vs Final Profile Chart" width="100%"/>
+</p>
 
-- **`clippy` mean:** `63.42s` (baseline) → **`15.65s`** (**-75.3%**)
-- **`nextest` mean:** `52.76s` (baseline) → **`32.62s`** (**-38.2%**)
-- **Overall p90:** `117.72s` (baseline) → **`58.43s`** (**-50.4%**)
+---
+
+<p align="center">
+  <a href="02-storage-and-sccache-benchmarks.md">← Issue 02</a> ·
+  <a href="../README.md">Cover</a> ·
+  <a href="04-privacy-preserving-cargo-telemetry.md">Next: Issue 04 — Privacy-Preserving Telemetry →</a>
+</p>
