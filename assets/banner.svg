@@ -21,7 +21,7 @@
   <rect x="0.5" y="0.5" width="1199" height="339" rx="18" fill="none" stroke="#334155" stroke-opacity="0.6"/>
 
   <!-- Top editorial masthead bar -->
-  <text x="56" y="54" fill="#fb923c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" letter-spacing="2.5">ENGINEERING FIELD REPORT  ·  ISSUE #01  ·  OPEN TELEMETRY</text>
+  <text x="56" y="54" fill="#fb923c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" letter-spacing="2.5">ENGINEERING FIELD REPORT  ·  VOLUME 01  ·  OPEN TELEMETRY</text>
   <rect x="964" y="34" width="180" height="28" rx="14" fill="#0f291e" stroke="#10b981" stroke-opacity="0.5"/>
   <circle cx="984" cy="48" r="4.5" fill="#10b981"/>
   <text x="998" y="52.5" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600">0 LEAKS VERIFIED</text>
@@ -29,32 +29,32 @@
   <!-- Main magazine title -->
   <text x="56" y="122" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="50" font-weight="800" letter-spacing="-1">The Rust Compile Journal</text>
   <text x="56" y="162" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" font-weight="400">Taming an 883-Package Workspace Across Multi-Worktree AI Agents</text>
-  <text x="56" y="191" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5">1,091 real Cargo runs  ·  14 env_hash profiles  ·  mold vs wild  ·  SSD vs HDD vs /dev/shm  ·  flock queue</text>
+  <text x="56" y="191" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5">1,102 real Cargo runs  ·  14 env_hash profiles  ·  mold vs wild  ·  SSD vs HDD vs /dev/shm  ·  24h Bootstrap Model</text>
 
   <!-- KPI strip cards -->
   <g transform="translate(56, 222)">
     <!-- Card 1 -->
     <rect x="0" y="0" width="252" height="82" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.2"/>
-    <text x="18" y="26" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="1">CLIPPY MEAN TIME</text>
-    <text x="18" y="60" fill="#fb923c" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="800">-75.3%</text>
-    <text x="136" y="58" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">63.4s → 15.7s</text>
+    <text x="18" y="26" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="1">24H TIME SAVED</text>
+    <text x="18" y="60" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="800">+4.31h</text>
+    <text x="130" y="58" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5">-48.7% / day</text>
 
     <!-- Card 2 -->
     <rect x="278" y="0" width="252" height="82" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.2"/>
-    <text x="296" y="26" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="1">OVERALL P90 WALL</text>
-    <text x="296" y="60" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="800">-50.4%</text>
-    <text x="414" y="58" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">117.7s → 58.4s</text>
+    <text x="296" y="26" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="1">CLIPPY MEAN TIME</text>
+    <text x="296" y="60" fill="#fb923c" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="800">-75.4%</text>
+    <text x="414" y="58" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5">63.4s → 15.6s</text>
 
     <!-- Card 3 -->
     <rect x="556" y="0" width="252" height="82" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.2"/>
-    <text x="574" y="26" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="1">HOT NEXTEST LOOP</text>
-    <text x="574" y="60" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="800">7.83s</text>
-    <text x="670" y="58" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">SSD sccache</text>
+    <text x="574" y="26" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="1">OVERALL P90 WALL</text>
+    <text x="574" y="60" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="800">-50.3%</text>
+    <text x="692" y="58" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5">117.7s → 58.5s</text>
 
     <!-- Card 4 -->
     <rect x="834" y="0" width="254" height="82" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.2"/>
-    <text x="852" y="26" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="1">AVG RAM / OOM KILLS</text>
-    <text x="852" y="60" fill="#a78bfa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="800">-24.8%</text>
-    <text x="970" y="58" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">0 OOMs (0 swap)</text>
+    <text x="852" y="26" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="1">LOCK QUEUE WAIT</text>
+    <text x="852" y="60" fill="#a78bfa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="800">-80.2%</text>
+    <text x="970" y="58" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5">M/G/1 · 0 OOMs</text>
   </g>
 </svg>

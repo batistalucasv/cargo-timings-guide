@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 350" width="980" height="350" role="img" aria-label="Five Sizes of Cargo Workloads">
   <rect width="980" height="350" rx="14" fill="#0d1117" stroke="#30363d"/>
-  <text x="32" y="40" fill="#f0f6fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="700">The Five Sizes of Cargo (n = 1,091 Real Runs)</text>
+  <text x="32" y="40" fill="#f0f6fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="700">The Five Sizes of Cargo (n = 1,102 Real Runs)</text>
   <text x="32" y="62" fill="#8b949e" font-family="ui-monospace, monospace" font-size="12">Median vs. p90 Wall Time (left) and Average vs. Peak RAM Footprint (right)</text>
   <text x="278" y="88" fill="#8b949e" font-family="ui-monospace, monospace" font-size="11" font-weight="700">WALL TIME (p50 solid / p90 faded)</text>
   <text x="688" y="88" fill="#8b949e" font-family="ui-monospace, monospace" font-size="11" font-weight="700">PEAK RAM (avg / max MiB)</text>
   <text x="32" y="121" fill="#e6edf3" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Repo Automation (xtask)</text>
-  <text x="32" y="137" fill="#6e7681" font-family="ui-monospace, monospace" font-size="11">n = 61 runs</text>
-  <rect x="278" y="112" width="9.5" height="18" rx="4" fill="#38bdf8" fill-opacity="0.28"/>
+  <text x="32" y="137" fill="#6e7681" font-family="ui-monospace, monospace" font-size="11">n = 63 runs</text>
+  <rect x="278" y="112" width="9.2" height="18" rx="4" fill="#38bdf8" fill-opacity="0.28"/>
   <rect x="278" y="112" width="4.0" height="18" rx="4" fill="#38bdf8"/>
-  <text x="295.5" y="125" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">1.3s / 7.2s</text>
+  <text x="295.2" y="125" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">1.3s / 7.0s</text>
   <rect x="688" y="112" width="8.6" height="18" rx="4" fill="#a78bfa" fill-opacity="0.28"/>
-  <rect x="688" y="112" width="7.4" height="18" rx="4" fill="#a78bfa"/>
-  <text x="952" y="125" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">230 / 267</text>
+  <rect x="688" y="112" width="7.5" height="18" rx="4" fill="#a78bfa"/>
+  <text x="952" y="125" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">231 / 267</text>
   <text x="32" y="167" fill="#e6edf3" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Formatting (cargo fmt)</text>
-  <text x="32" y="183" fill="#6e7681" font-family="ui-monospace, monospace" font-size="11">n = 318 runs</text>
+  <text x="32" y="183" fill="#6e7681" font-family="ui-monospace, monospace" font-size="11">n = 321 runs</text>
   <rect x="278" y="158" width="4.9" height="18" rx="4" fill="#818cf8" fill-opacity="0.28"/>
   <rect x="278" y="158" width="4.7" height="18" rx="4" fill="#818cf8"/>
   <text x="290.9" y="171" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">3.6s / 3.7s</text>
@@ -21,13 +21,13 @@
   <rect x="688" y="158" width="4.9" height="18" rx="4" fill="#a78bfa"/>
   <text x="952" y="171" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">151 / 246</text>
   <text x="32" y="213" fill="#e6edf3" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Focused Dev (clippy/test/nextest)</text>
-  <text x="32" y="229" fill="#6e7681" font-family="ui-monospace, monospace" font-size="11">n = 686 runs</text>
-  <rect x="278" y="204" width="107.6" height="18" rx="4" fill="#f97316" fill-opacity="0.28"/>
+  <text x="32" y="229" fill="#6e7681" font-family="ui-monospace, monospace" font-size="11">n = 692 runs</text>
+  <rect x="278" y="204" width="107.2" height="18" rx="4" fill="#f97316" fill-opacity="0.28"/>
   <rect x="278" y="204" width="21.2" height="18" rx="4" fill="#f97316"/>
-  <text x="393.6" y="217" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">16.1s / 81.5s</text>
+  <text x="393.2" y="217" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">16.1s / 81.2s</text>
   <rect x="688" y="204" width="187.7" height="18" rx="4" fill="#a78bfa" fill-opacity="0.28"/>
   <rect x="688" y="204" width="61.3" height="18" rx="4" fill="#a78bfa"/>
-  <text x="952" y="217" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">1,900 / 5,819</text>
+  <text x="952" y="217" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="11.5">1,899 / 5,819</text>
   <text x="32" y="259" fill="#e6edf3" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Full Verification (xtask wasm)</text>
   <text x="32" y="275" fill="#6e7681" font-family="ui-monospace, monospace" font-size="11">n = 8 runs</text>
   <rect x="278" y="250" width="74.4" height="18" rx="4" fill="#eab308" fill-opacity="0.28"/>
