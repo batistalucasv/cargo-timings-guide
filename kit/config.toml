@@ -1,0 +1,36 @@
+# Portable Fast-Compile Cargo Configuration (~/.cargo/config.toml)
+# Tested on 8-core / 16-thread Linux workstation, 30 GiB RAM (0 swap), SATA SSD + HDD.
+
+[build]
+# Leave 2 threads free for OS, IDE, and parallel AI coding agents.
+# Safe against OOM when combined with `flock` serialization (1 Cargo process at a time).
+jobs = 14
+
+# Keep target-dir on your fastest local SSD (NOT on an HDD and NOT in /dev/shm if RAM <= 32 GiB).
+# Replace $HOME with your absolute home path in Cargo's config.toml.
+target-dir = "$HOME/.cache/cargo-target"
+
+# Global compiler cache across git worktrees and branches.
+rustc-wrapper = "sccache"
+
+[target.x86_64-unknown-linux-gnu]
+# Replace GNU ld with mold for sub-second linking.
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+
+[env]
+# CRITICAL: Keep SCCACHE_DIR on SSD, never on a spinning HDD.
+SCCACHE_DIR = "$HOME/.cache/sccache"
+SCCACHE_CACHE_SIZE = "15G"
+# Note: Do NOT set CARGO_INCREMENTAL = "0" globally for local dev if you iterate in-place;
+# keeping incremental enabled in [profile.dev] / [profile.test] slashed our median test loop.
+
+[profile.dev]
+debug = "line-tables-only"
+codegen-units = 256
+split-debuginfo = "unpacked"
+
+[profile.test]
+opt-level = 0
+debug = "line-tables-only"
+codegen-units = 256
+split-debuginfo = "unpacked"
