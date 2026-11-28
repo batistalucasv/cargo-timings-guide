@@ -29,7 +29,7 @@
   <!-- Main magazine title -->
   <text x="56" y="122" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="50" font-weight="800" letter-spacing="-1">The Rust Compile Journal</text>
   <text x="56" y="162" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" font-weight="400">Taming an 883-Package Workspace Across Multi-Worktree AI Agents</text>
-  <text x="56" y="191" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5">1,102 real Cargo runs  ·  14 env_hash profiles  ·  mold vs wild  ·  SSD vs HDD vs /dev/shm  ·  24h Bootstrap Model</text>
+  <text x="56" y="191" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5">1,387 real Cargo runs  ·  14 env_hash profiles  ·  mold vs wild  ·  SSD vs HDD vs /dev/shm  ·  24h Bootstrap Model</text>
 
   <!-- KPI strip cards -->
   <g transform="translate(56, 222)">

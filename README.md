@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Rust-1.100-f97316?style=for-the-badge&logo=rust&logoColor=white" alt="Rust"/>
   <img src="https://img.shields.io/badge/Linker-mold_3.0-0ea5e9?style=for-the-badge" alt="mold"/>
   <img src="https://img.shields.io/badge/Cache-sccache_SSD-10b981?style=for-the-badge" alt="sccache"/>
-  <img src="https://img.shields.io/badge/Telemetry-1%2C102_Runs-8b5cf6?style=for-the-badge" alt="Telemetry"/>
+  <img src="https://img.shields.io/badge/Telemetry-1%2C387_Runs-8b5cf6?style=for-the-badge" alt="Telemetry"/>
   <img src="https://img.shields.io/badge/24h_Saved-+4.31_Hours-22c55e?style=for-the-badge" alt="24h Saved"/>
   <img src="https://img.shields.io/badge/License-MIT-334155?style=for-the-badge" alt="MIT License"/>
 </p>
@@ -16,7 +16,7 @@
 </h3>
 
 <p align="center">
-  <strong>This open engineering journal documents 14 real Cargo profiles, 1,102 instrumented builds, and a stratified 24-hour statistical model showing how we recovered <code>+4.31 hours/day</code> of pure compile time with <code>0 OOM crashes</code> and <code>0 private leaks</code>.</strong>
+  <strong>This open engineering journal documents 14 real Cargo profiles, 1,387 instrumented builds, and a stratified 24-hour statistical model showing how we recovered <code>+4.31 hours/day</code> of pure compile time with <code>0 OOM crashes</code> and <code>0 private leaks</code>.</strong>
 </p>
 
 ---
@@ -54,7 +54,7 @@ Each issue is a self-contained, deeply technical field report backed by verifiab
 ## Quick Start · Reproduce Everything Locally
 
 ```bash
-# 1. Inspect the anonymized telemetry dataset (1,102 real Cargo runs)
+# 1. Inspect the anonymized telemetry dataset (1,387 real Cargo runs)
 python3 kit/analyze.py
 
 # 2. Re-run the 10,000-iteration 24-hour stratified bootstrap model
